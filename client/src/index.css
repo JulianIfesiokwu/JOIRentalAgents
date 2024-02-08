@@ -1,3 +1,82 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.purple-60 {
+  color: #703bf7;
+}
+.purple-65 {
+  color: #8254f8;
+}
+.purple-70 {
+  color: #946cf9;
+}
+.purple-75 {
+  color: #a685fa;
+}
+.purple-90 {
+  color: #dbcefd;
+}
+.purple-95 {
+  color: #a685fa;
+}
+
+.purple-97 {
+  color: #f4f0fe;
+}
+
+.purple-99 {
+  color: #fbfaff;
+}
+
+.white-90 {
+  color: #e4e4e7;
+}
+
+.white-95 {
+  color: #f1f1f3;
+}
+
+.white-97 {
+  color: #f7f7f8;
+}
+
+.white-99 {
+  color: #fcfcfd;
+}
+
+.gray-10 {
+  color: #1a1a1a;
+}
+
+.gray-15 {
+  color: #262626;
+}
+
+.gray-20 {
+  color: #333333;
+}
+
+.gray-30 {
+  color: #4d4d4d;
+}
+
+.gray-40 {
+  color: #666666;
+}
+
+.gray-50 {
+  color: #808080;
+}
+
+.gray-60 {
+  color: #999999;
+}
+
+.absolute-white {
+  color: #ffffff;
+}
+
+.absolute-black {
+  color: #000000;
+}
