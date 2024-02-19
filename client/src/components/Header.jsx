@@ -31,7 +31,7 @@ function Header() {
           </button>
         </div>
       )}
-      <Navbar className='bg-[#1a1a1a] md:px-20 md:py-[14px]'>
+      <Navbar className='bg-[#1a1a1a] md:px-[162px] md:py-[14px]'>
         <Navbar.Brand href='#'>
           <picture>
             <source
