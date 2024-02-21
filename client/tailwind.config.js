@@ -15,6 +15,7 @@ export default {
         pattern: "url('/src/assets/pattern.svg')",
         waves: "url('/src/assets/waves.svg')",
         headerBackground: "url('/src/assets/header-background.svg')",
+        homelandingBackground: "url('/src/assets/homelanding-image.svg')",
       },
     },
   },
