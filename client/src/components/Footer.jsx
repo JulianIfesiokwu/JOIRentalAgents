@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div className='w-full'>
-        <div className='flex flex-col px-4 py-[50px md:p-[80px] gap-[50px] xl:px-[162px] xl:py-[100px] md:gap-[80px] md:flex-row md:justify-between bg-[#141414]'>
-          <div className='flex flex-col gap-5 md:gap-[30px]'>
+      <div className='flex flex-col'>
+        <div className='border-t border-[#262626] flex flex-col px-4 py-[50px] md:p-20 gap-[50px] md:gap-20 xl:px-[162px] xl:py-[100px] md:flex-row md:justify-between bg-[#141414]'>
+          <div className='flex flex-col gap-5 md:gap-6'>
             <picture>
               <source
                 srcSet='/src/assets/desktop-logo.svg'
@@ -21,7 +21,7 @@ const Footer = () => {
                 alt='JOI logo'
               />
             </picture>
-            <div className='flex justify-between gap-[6px] px-4 py-[14px] md:gap-[10px] md:px-[20px] md:py-[14px] border border-[#262626] rounded-xl'>
+            <div className='flex items-center justify-between gap-[6px] px-4 py-[14px] border border-[#262626] rounded-xl'>
               <img
                 src='/src/assets/email-icon.svg'
                 alt='email'
@@ -29,16 +29,16 @@ const Footer = () => {
               <input
                 placeholder='Enter Your Email'
                 type='email'
-                className='leading-[24px] font-medium text-[#999999] text-lg bg-transparent outline-none border-none'
+                className='md:w-[200px] leading-[24px] font-medium text-[#999999] text-lg bg-transparent outline-none border-none'
               />
               <img
                 src='/src/assets/sendEmail-icon.svg'
                 alt='email'
-                className='cursor-pointer'
+                className='cursor-pointer w-[24px] h-[24px]'
               />
             </div>
           </div>
-          <div className='grid grid-rows-3 grid-cols-2 md:flex md:justify-between gap-y-5 gap-x-16'>
+          <div className='md:w-2/3 grid grid-rows-3 grid-cols-2 md:flex flex-wrap md:justify-between gap-y-5 gap-x-4 md:gap-0'>
             <div className='flex flex-col gap-6'>
               <Link
                 to='/'

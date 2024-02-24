@@ -92,6 +92,10 @@ body {
   transform: translate(-50%, -50%);
 }
 
-* {
-  box-sizing: border-box;
+.inset-top-center {
+  position: absolute;
+  top: 30%;
+  right: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
 }

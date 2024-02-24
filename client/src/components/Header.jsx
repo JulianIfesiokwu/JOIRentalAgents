@@ -9,7 +9,7 @@ function Header() {
   return (
     <>
       {showTop && (
-        <div className='flex items-center justify-between md:justify-center bg-headerBackground bg-no-repeat bg-cover bg-[#1a1a1a] bg-center pt-10 pb-5 px-4 md:px-20 md:py-[14px] xl:px-[162px] xl:py-5 relative'>
+        <div className='flex items-center justify-between md:justify-center bg-headerBackground bg-no-repeat bg-cover bg-[#1a1a1a] bg-center pt-10 pb-5 px-4 md:px-20 md:py-[14px] relative'>
           <p className='text-center leading-[150%] text-xs md:text-sm absolute-white'>
             ✨Discover Your Dream Property with JOIEstateAgents
             <span className='ml-[6px] md:ml-2'>Learn More</span>
@@ -26,7 +26,7 @@ function Header() {
           </button>
         </div>
       )}
-      <Navbar className='bg-[#1a1a1a] md:px-[80px] md:py-[14px]'>
+      <Navbar className='bg-[#1a1a1a] px-4 py-5 md:px-[80px] md:py-[14px] xl:px-[162px] xl:py-5'>
         <Navbar.Brand href='#'>
           <picture>
             <source

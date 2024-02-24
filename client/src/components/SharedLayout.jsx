@@ -4,11 +4,11 @@ import Footer from "./Footer";
 
 const SharedLayout = () => {
   return (
-    <>
+    <div className='w-full'>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 
