@@ -99,3 +99,16 @@ body {
   left: 55%;
   transform: translate(-50%, -50%);
 }
+.inset-bottom-center {
+  position: absolute;
+  bottom: 30%;
+  right: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shadow-effect {
+  box-shadow: 0px 0px 0px 6px rgba(25, 25, 25, 1);
+  -webkit-box-shadow: 0px 0px 0px 6px rgba(25, 25, 25, 1);
+  -moz-box-shadow: 0px 0px 0px 6px rgba(25, 25, 25, 1);
+}
