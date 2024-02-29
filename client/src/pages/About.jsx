@@ -11,11 +11,21 @@ const About = () => {
       {/* LANDING SECTION */}
       <div className=''>
         <div className='flex flex-col md:flex-row-reverse items-center gap-10'>
-          <img
-            src='src/assets/about-landing-background.svg'
-            alt=''
-            className='object-cover w-full rounded-[12px] md:basis-1/2'
-          />
+          <picture className='basis-1/2'>
+            <source
+              srcSet='/src/assets/about-landing-desktop.svg'
+              media='(min-width: 769px)'
+            ></source>
+            <source
+              srcSet='/src/assets/about-landing-laptop.svg'
+              media='(min-width: 600px)'
+            ></source>
+            <img
+              src='/src/assets/about-landing.svg'
+              alt=''
+              className='object-cover'
+            />
+          </picture>
           <div className='basis-1/2'>
             <img
               src='src/assets/linear-stars.svg'
@@ -159,29 +169,31 @@ const About = () => {
               step-by-step guide to how it all works.
             </p>
           </div>
-          <div className='flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-10'>
-            <NavigateCard
-              stepNumber={"01"}
-              title={"Discover a World of Possibilities"}
-              concise={
-                "Your journey begins with exploring our carefully curated property listings. Use our intuitive search tools to filter properties based on your preferences, including location."
-              }
-            />
-            <NavigateCard
-              stepNumber={"02"}
-              title={"Narrowing Down Your Choices"}
-              concise={
-                "Once you've found properties that catch your eye, save them to your account or make a shortlist. This allows you to compare and revisit your favorites as you make your decision."
-              }
-            />
-            <NavigateCard
-              stepNumber={"03"}
-              title={"Personalized Guidance"}
-              concise={
-                "Have questions about a property or need more information? Our dedicated team of real estate experts is just a call or message away."
-              }
-            />
-            <div className='hidden md:inline-block'>
+          <div className='flex flex-col md:gap-10'>
+            <div className='flex flex-col items-stretch md:grid auto-rows-fr grid-cols-3 gap-5'>
+              <NavigateCard
+                stepNumber={"01"}
+                title={"Discover a World of Possibilities"}
+                concise={
+                  "Your journey begins with exploring our carefully curated property listings. Use our intuitive search tools to filter properties based on your preferences, including location."
+                }
+              />
+              <NavigateCard
+                stepNumber={"02"}
+                title={"Narrowing Down Your Choices"}
+                concise={
+                  "Once you've found properties that catch your eye, save them to your account or make a shortlist. This allows you to compare and revisit your favorites as you make your decision."
+                }
+              />
+              <NavigateCard
+                stepNumber={"03"}
+                title={"Personalized Guidance"}
+                concise={
+                  "Have questions about a property or need more information? Our dedicated team of real estate experts is just a call or message away."
+                }
+              />
+            </div>
+            <div className='hidden md:grid items-stretch content-stretch grid-rows-1 grid-cols-3 gap-5'>
               <NavigateCard
                 stepNumber={"04"}
                 title={"See It for Yourself"}
@@ -189,8 +201,6 @@ const About = () => {
                   "Have questions about a property or need more information? Our dedicated team of real estate experts is just a call or message away."
                 }
               />
-            </div>
-            <div className='hidden md:inline-block'>
               <NavigateCard
                 stepNumber={"05"}
                 title={"Making Informed Decisions"}
@@ -198,8 +208,6 @@ const About = () => {
                   "Before making an offer, our team will assist you with due diligence, including property inspections, legal checks, and market analysis. We want you to be fully informed."
                 }
               />
-            </div>
-            <div className='hidden md:inline-block'>
               <NavigateCard
                 stepNumber={"06"}
                 title={"Getting the Best Deal"}
@@ -218,18 +226,18 @@ const About = () => {
           alt=''
           className=''
         />
-        <div className='flex flex-col gap-10'>
+        <div className='flex flex-col gap-10 md:gap-15'>
           <div className='flex flex-col gap-2'>
-            <h3 className='font-semibold text-[28px] leading-[1.5] absolute-white'>
+            <h3 className='font-semibold text-[28px] md:text-[38px] leading-[1.5] absolute-white'>
               Meet the JOIAgents Team
             </h3>
-            <p className='font-medium text-sm leading-[1.5] text-[#999999]'>
+            <p className='font-medium text-sm md:text-base leading-[1.5] text-[#999999]'>
               At JOIAgents, our success is driven by the dedication and
               expertise of our team. Get to know the people behind our mission
               to make your real estate dreams a reality.
             </p>
           </div>
-          <div className='flex flex-col gap-5'>
+          <div className='flex flex-col items-stretch md:grid auto-rows-fr grid-cols-4 gap-5'>
             <TeamMemberCard
               name={"Max Mitchell"}
               status={"Founder"}
