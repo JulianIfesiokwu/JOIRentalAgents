@@ -17,7 +17,8 @@ export default {
         headerBackground: "url('/src/assets/header-background.svg')",
         homelandingBackground: "url('/src/assets/home-landing-image.svg')",
         homeLandingBackgroundDesign:
-          "url ('/src/assets/home-landing-design.svg')",
+          "url('/src/assets/home-landing-design.svg')",
+        ctaBackgroundLaptop: "url('/src/assets/cta-background-laptop.svg')",
       },
     },
   },

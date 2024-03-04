@@ -1,6 +1,6 @@
 const ValuesCard = ({ title, concise, image }) => {
   return (
-    <div className='flex flex-col gap-[14px]'>
+    <div className='flex flex-col gap-[14px] py-5'>
       <div className='flex items-center gap-2'>
         <img
           src={image}
