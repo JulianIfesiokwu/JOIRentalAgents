@@ -1,7 +1,7 @@
 export const SearchFilter = ({ icon, placeholder }) => {
   return (
-    <div className='flex items-center justify-between gap-5 px-[14px] py-3 bg-[#141414] border border-[#262626] rounded-xl shadow-effect'>
-      <div className='flex items-center'>
+    <div className='md:min-w-[0px] flex items-center justify-between gap-5 px-[14px] py-3 bg-[#141414] border border-[#262626] rounded-xl shadow-effect'>
+      <div className='flex items-center min-w-[0px]'>
         <img
           src={icon}
           alt=''
@@ -10,7 +10,7 @@ export const SearchFilter = ({ icon, placeholder }) => {
         <input
           placeholder={placeholder}
           type='search'
-          className=' absolute-white leading-[24px] font-medium text-[#999999] text-lg bg-transparent outline-none border-none'
+          className='min-w-[0px] absolute-white leading-[24px] font-medium text-[#999999] text-lg bg-transparent outline-none border-none'
         />
       </div>
       <button
