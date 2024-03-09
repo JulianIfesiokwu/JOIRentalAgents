@@ -4,7 +4,7 @@ const LinkToSearch = ({ title, img }) => {
   return (
     <Link
       to='/search'
-      className='flex-1 flex flex-col items-center justify-center cursor-pointer rounded-[12px] gap-[14px] md:gap-5 px-[14px] py-5 xl:px-5 xl:py-10 bg-[#1a1a1a] relative border border-[#262626]'
+      className='flex-1 flex flex-col items-center justify-between cursor-pointer rounded-[12px] gap-[14px] md:gap-5 px-[14px] py-5 xl:px-5 xl:py-10 bg-[#1a1a1a] relative border border-[#262626]'
     >
       <img
         src='/src/assets/diagonal-arrow-icon.svg'

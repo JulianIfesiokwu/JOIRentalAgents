@@ -5,6 +5,7 @@ import Properties from "./pages/Properties";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
+import PropertyDetailsPage from "./pages/PropertyDetailsPage";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         <Route
           path='/properties'
           element={<Properties />}
+        />
+        <Route
+          path='/:id'
+          element={<PropertyDetailsPage />}
         />
         <Route
           path='/about'
