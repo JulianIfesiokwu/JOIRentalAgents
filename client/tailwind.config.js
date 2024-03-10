@@ -19,6 +19,7 @@ export default {
         homeLandingBackgroundDesign:
           "url('/src/assets/home-landing-design.svg')",
         ctaBackgroundLaptop: "url('/src/assets/cta-background-laptop.svg')",
+        valueOfProperty: "url('/src/assets/value-of-property-bg.svg')",
       },
     },
   },
