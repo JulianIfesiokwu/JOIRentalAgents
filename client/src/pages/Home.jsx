@@ -1,11 +1,9 @@
 import CallToAction from "../components/CallToAction";
 import CommentCard from "../components/CommentCard";
-import FAQCard from "../components/FAQCard";
-import InfoCard from "../components/InfoCard";
+import FAQ from "../components/FAQ";
 import LinkToSearch from "../components/LinkToSearch";
 import Metrics from "../components/Metrics";
 import PropertyCard from "../components/PropertyCard";
-import { questions } from "../data";
 
 const Home = () => {
   return (
@@ -165,58 +163,7 @@ const Home = () => {
         </div>
       </div>
       {/* FAQ'S */}
-      <div className='md:gap-[50px] xl:gap-[250px] md:px-[80px] xl:px-[162px] xl:py-[100px]'>
-        <img
-          src='src/assets/linear-stars.svg'
-          alt=''
-        />
-        <div className='flex flex-col gap-10'>
-          <div className='flex flex-col gap-[6px]'>
-            <h3 className='leading-[1.5] absolute-white font-semibold text-[28px]'>
-              Frequently Asked Questions
-            </h3>
-            <p className='font-medium leading-[1.5] text-14px text-[#999999]'>
-              Find answers to common questions about Estatein's services,
-              property listings, and the real estate process. We're here to
-              provide clarity and assist you every step of the way.
-            </p>
-          </div>
-          <div className='flex flex-col md:flex-row md:gap-5'>
-            {questions.map((item, index) => (
-              <FAQCard
-                question={item.question}
-                answer={item.answer}
-                key={index}
-              />
-            ))}
-          </div>
-          <div className='border-t border-[#262626] flex items-center justify-between pt-4'>
-            <button className='leading-[1.5] text-[14px] absolute-white text-center px-5 py-[14px] bg-[#1a1a1a] rounded-[8px]'>
-              View All FAQ's
-            </button>
-            <div className='flex gap-[10px] items-center justify-between'>
-              <div className='rounded-full p-[10px] border border-[#262626]'>
-                <img
-                  src='src/assets/left-button.svg'
-                  alt=''
-                />
-              </div>
-              <div className=''>
-                <p className='font-medium text-[14px] text-[#999999]'>
-                  <span className='absolute-white '>01</span>
-                  {"  "}of 10
-                </p>
-              </div>
-              <div className='rounded-full p-[10px] border border-[#262626]'>
-                <img
-                  src='src/assets/right-button.svg'
-                  alt=''
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FAQ />
       {/* CTA */}
       <CallToAction />
     </div>

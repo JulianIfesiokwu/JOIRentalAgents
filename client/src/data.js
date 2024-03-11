@@ -1,17 +1,16 @@
 export const questions = [
   {
-    question: "How do I search for properties on JOIEstateAgents?",
+    question: "How do I search for properties on JOIAgents?",
     answer:
       "Learn how to use our user-friendly search tools to find properties that match your criteria.",
   },
   {
-    question:
-      "What documents do I need to sell my property through JOIEstateAgents?",
+    question: "What documents do I need to sell my property through JOIAgents?",
     answer:
       "Find out about the necessary documentation for listing your property with us.",
   },
   {
-    question: "How can I contact a JOIEstateAgents agent?",
+    question: "How can I contact a JOIAgents agent?",
     answer:
       "Discover the different ways you can get in touch with our experienced agents.",
   },
@@ -38,7 +37,7 @@ export const comments = [
     rating: 5,
     caption: "Trusted Advisors",
     comment:
-      "The JOIEstateAgents team guided us through the entire buying process. Their knowledge and commitment to our needs were impressive. Thank you for your support!",
+      "The JOIAgents team guided us through the entire buying process. Their knowledge and commitment to our needs were impressive. Thank you for your support!",
     name: "John Mans",
     location: "USA, California",
   },

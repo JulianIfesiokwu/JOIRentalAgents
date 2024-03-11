@@ -21,7 +21,7 @@ function App() {
           element={<Properties />}
         />
         <Route
-          path='/:id'
+          path='/properties/:id'
           element={<PropertyDetailsPage />}
         />
         <Route
