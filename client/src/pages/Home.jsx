@@ -13,7 +13,7 @@ const Home = () => {
         <img
           src='src/assets/text-stamp.svg'
           alt=''
-          className='absolute md:inset-top-center z-50 left-0 top-[25%] md:left-[50%] md:right-50% md:top-[20%]'
+          className='absolute md:inset-top-center z-10 left-0 top-[25%] md:left-[50%] md:right-50% md:top-[20%]'
         />
         <div className='basis-1/2 flex flex-col flex-1 md:gap-[50px] xl:gap-15 md:pl-[80px] xl:pl-[162px] relative'>
           <div className='flex flex-col gap-4 xl:gap-6 mb-10 md:mb-0'>
