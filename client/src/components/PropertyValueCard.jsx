@@ -2,7 +2,7 @@ import React from "react";
 
 const PropertyValueCard = ({ title, img, concise }) => {
   return (
-    <div className='basis-1/2 flex flex-col gap-4 md:gap-6 p-6 md:p-[40px] rounded-[10px] border border-[#262626] bg-[#141414]'>
+    <div className='basis-1/2 flex flex-col gap-4 md:gap-5 p-6 md:p-[40px] rounded-[10px] border border-[#262626] bg-[#141414]'>
       <div className='flex items-center gap-[10px] md:gap-4'>
         <img
           src={img}
