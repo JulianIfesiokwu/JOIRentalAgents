@@ -80,6 +80,9 @@
 .absolute-black {
   color: #000000;
 }
+.absolute-gray {
+  color: #999999;
+}
 
 body {
   font-family: "Urbanist", "sans-serif";

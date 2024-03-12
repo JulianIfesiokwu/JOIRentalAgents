@@ -41,7 +41,7 @@ const FAQ = () => {
           <div className='flex gap-[10px] items-center justify-between'>
             <div className='rounded-full p-[10px] border border-[#262626] md:hidden'>
               <img
-                src='src/assets/left-button.svg'
+                src='/src/assets/left-button.svg'
                 alt=''
                 className='md:hidden'
               />
@@ -54,7 +54,7 @@ const FAQ = () => {
             </div>
             <div className='rounded-full p-[10px] border border-[#262626] md:hidden'>
               <img
-                src='src/assets/right-button.svg'
+                src='/src/assets/right-button.svg'
                 alt=''
               />
             </div>
@@ -62,13 +62,13 @@ const FAQ = () => {
           <div className='hidden md:flex md:gap-[10px]'>
             <div className='rounded-full p-[10px] border border-[#262626] hidden md:inline'>
               <img
-                src='src/assets/left-button.svg'
+                src='/src/assets/left-button.svg'
                 alt=''
               />
             </div>
             <div className='rounded-full p-[10px] border border-[#262626] hidden md:inline'>
               <img
-                src='src/assets/right-button.svg'
+                src='/src/assets/right-button.svg'
                 alt=''
               />
             </div>
