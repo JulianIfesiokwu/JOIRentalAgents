@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import PropertyDetailsPage from "./pages/PropertyDetailsPage";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -15,6 +17,14 @@ function App() {
           path='/'
           index
           element={<Home />}
+        />
+        <Route
+          path='/login'
+          element={<Login />}
+        />
+        <Route
+          path='/signup'
+          element={<SignUp />}
         />
         <Route
           path='/properties'

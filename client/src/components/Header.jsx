@@ -43,18 +43,20 @@ function Header() {
             />
           </picture>
         </Navbar.Brand>
-        <div className='flex items-center md:order-2 '>
+        <div className='md:order-2 flex items-center gap-6 mb-4 md:mb-0'>
           <Navbar.Link
-            active={path === "/contact"}
+            active={path === "/login"}
             as={"div"}
             className='hidden md:inline absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
-            <Link
-              to='/contact'
-              className='px-5 py-[14px] bg-[#141414] border border-[#262626] rounded-[8px]'
-            >
-              Contact Us
-            </Link>
+            <Link to='/login'>Login</Link>
+          </Navbar.Link>
+          <Navbar.Link
+            active={path === "/signup"}
+            as={"div"}
+            className='hidden md:inline absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
+          >
+            <Link to='/signup'>Sign up</Link>
           </Navbar.Link>
           <Navbar.Toggle />
         </div>
@@ -90,14 +92,23 @@ function Header() {
           <Navbar.Link
             active={path === "/contact"}
             as={"div"}
+            className='absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
+          >
+            <Link to='/contact'>Contact Us</Link>
+          </Navbar.Link>
+          <Navbar.Link
+            active={path === "/login"}
+            as={"div"}
             className='md:hidden absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
-            <Link
-              to='/contact'
-              className='px-5 py-[14px] bg-[#141414] border border-[#262626] rounded-[8px]'
-            >
-              Contact Us
-            </Link>
+            <Link to='/login'>Login</Link>
+          </Navbar.Link>
+          <Navbar.Link
+            active={path === "/signup"}
+            as={"div"}
+            className='md:hidden absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
+          >
+            <Link to='/signup'>Sign up</Link>
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
