@@ -1,6 +1,6 @@
 const ClientDetails = ({ placeholder, label, type }) => {
   return (
-    <div className='flex flex-col gap-[10px] md:gap-[14px] lg:gap-4 w-full md:basis-1/2'>
+    <div className='flex flex-col gap-[10px] md:gap-[14px] lg:gap-4 w-full '>
       <label className='absolute-white text-base lg:text-[20px] font-semibold'>
         {label}
       </label>
