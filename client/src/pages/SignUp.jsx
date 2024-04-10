@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import ClientDetails from "../components/ClientDetails";
 
@@ -13,6 +15,14 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+
+  const userCreated = () => {
+    toast("Your account has been created");
+
+    toast.success("Success Notification !", {
+      position: "top-center",
+    });
+  };
 
   const handleChange = (e) => {
     if (
@@ -44,7 +54,10 @@ const SignUp = () => {
       }
 
       if (res.ok) {
-        navigate("/login");
+        toast("Account created successfully!");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2500);
       }
 
       setLoading(false);
@@ -56,22 +69,32 @@ const SignUp = () => {
 
   return (
     <div className='bg-[#141414]'>
-      <div className='flex flex-col px-4 py-[50px] md:px-20 md:py-20 lg:px-[162px]'>
-        <img
-          src=''
-          alt=''
-          className=''
-        />
+      <div className='flex flex-col md:flex-row items-center md:justify-between gap-5 md:gap-[50px] px-4 py-[50px] md:px-20 md:py-20 lg:px-[162px]'>
+        <picture className='basis-1/2'>
+          <source
+            srcSet='/src/assets/about-landing-desktop.svg'
+            media='(min-width: 769px)'
+          ></source>
+          <source
+            srcSet='/src/assets/about-landing-laptop.svg'
+            media='(min-width: 600px)'
+          ></source>
+          <img
+            src='/src/assets/about-landing.svg'
+            alt=''
+            className='object-cover'
+          />
+        </picture>
         <form
           onSubmit={handleSubmit}
-          className='md:w-2/3 flex flex-col md:flex-row flex-wrap rounded-[12px] gap-5 md:gap-10 lg:gap-[40px] p-4 md:p-[40px] lg:p-[50px] border border-[#262626]'
+          className='w-full md:basis-1/2 flex flex-col md:flex-row flex-wrap rounded-[12px] gap-5 md:gap-10 lg:gap-[40px] p-4 md:py-[40px] lg:py-[50px]'
         >
           <div className='md:flex md:flex-col gap-[30px] items-center md:w-full'>
             <div className='flex flex-col md:flex-row md:justify-between w-full gap-5 md:gap-[30px]'>
               <ClientDetails
                 type={"text"}
                 placeholder={"Enter your username"}
-                label={"User Name"}
+                label={"Username"}
                 handleChange={handleChange}
                 id={"username"}
                 value={formData.username}
@@ -85,7 +108,7 @@ const SignUp = () => {
                 value={formData.email}
               />
             </div>
-            <div className='flex flex-col md:flex-row md:justify-between w-full gap-5 md:gap-[30px]'>
+            <div className='flex flex-col md:flex-row md:justify-between w-full mt-5 md:mt-0 md:gap-[30px]'>
               <ClientDetails
                 type={"password"}
                 placeholder={"Your password"}
@@ -94,7 +117,7 @@ const SignUp = () => {
                 id={"password"}
               />
             </div>
-            <div className='flex flex-col md:flex-row items-center justify-between gap-5 lg:gap-[50px] w-full'>
+            <div className='flex flex-col md:flex-row items-center justify-between mt-5 md:mt-0 gap-5 lg:gap-[50px] w-full'>
               <div className='flex items-center justify-between gap-[6px] lg:gap-[10px]'>
                 <input
                   type='checkbox'
@@ -102,7 +125,7 @@ const SignUp = () => {
                   value={termsAccepted}
                   onClick={() => setTermsAccepted(!termsAccepted)}
                 />
-                <p className='text-sm md:text-base lg:text-[18px] font-medium leading-[1.5] text-[#999999]'>
+                <p className='text-sm md:text-base font-medium leading-[1.5] text-[#999999]'>
                   I agree with <a className='underline'>Terms of Use</a> and{" "}
                   <a className='underline'>Privacy Policy</a>
                 </p>
@@ -117,6 +140,12 @@ const SignUp = () => {
           </div>
         </form>
       </div>
+      <ToastContainer
+        position='top-right'
+        autoClose={2000}
+        hideProgressBar={true}
+        theme='dark'
+      />
     </div>
   );
 };
