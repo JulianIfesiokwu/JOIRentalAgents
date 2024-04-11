@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Spinner } from "flowbite-react";
 
 import ClientDetails from "../components/ClientDetails";
 
@@ -13,16 +14,9 @@ const SignUp = () => {
   });
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
+  const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
-
-  const userCreated = () => {
-    toast("Your account has been created");
-
-    toast.success("Success Notification !", {
-      position: "top-center",
-    });
-  };
 
   const handleChange = (e) => {
     if (
@@ -36,9 +30,16 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
+
+    if (!termsAccepted) {
+      setError("Please accept the Terms of Use & Privacy Policy");
+      return;
+    }
 
     try {
       setLoading(true);
+      setDisabled(true);
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
@@ -50,11 +51,14 @@ const SignUp = () => {
       const data = await res.json();
       if (!res.ok) {
         setLoading(false);
+        setDisabled(false);
+        console.log(data);
         return;
       }
 
       if (res.ok) {
         toast("Account created successfully!");
+        setDisabled(!disabled);
         setTimeout(() => {
           navigate("/login");
         }, 2500);
@@ -89,7 +93,7 @@ const SignUp = () => {
           onSubmit={handleSubmit}
           className='w-full md:basis-1/2 flex flex-col md:flex-row flex-wrap rounded-[12px] gap-5 md:gap-10 lg:gap-[40px] p-4 md:py-[40px] lg:py-[50px]'
         >
-          <div className='md:flex md:flex-col gap-[30px] items-center md:w-full'>
+          <div className='md:flex md:flex-col gap-[20px] md:w-full'>
             <div className='flex flex-col md:flex-row md:justify-between w-full gap-5 md:gap-[30px]'>
               <ClientDetails
                 type={"text"}
@@ -123,28 +127,52 @@ const SignUp = () => {
                   type='checkbox'
                   placeholder=''
                   value={termsAccepted}
-                  onClick={() => setTermsAccepted(!termsAccepted)}
+                  onClick={() => {
+                    setTermsAccepted(!termsAccepted);
+                    console.log(termsAccepted);
+                  }}
                 />
-                <p className='text-sm md:text-base font-medium leading-[1.5] text-[#999999]'>
+                <p className='text-sm md:text-sm font-medium leading-[1.5] text-[#999999]'>
                   I agree with <a className='underline'>Terms of Use</a> and{" "}
                   <a className='underline'>Privacy Policy</a>
                 </p>
               </div>
               <button
+                disabled={disabled}
                 type='submit'
                 className='text-sm md:text-base lg:text-[18px] leading-[1.24] font-medium bg-[#703BF7] px-[34px] lg:px-46 py-[14px] lg:py-[18px] rounded-[6px] absolute-white w-full md:w-auto md:shrink-0'
               >
-                Sign Up
+                {loading ? (
+                  <>
+                    <Spinner size='sm' />
+                    {"  "}
+                    <span>Creating account</span>
+                  </>
+                ) : (
+                  "Sign in"
+                )}
               </button>
             </div>
+            <p className='absolute-white text-sm font-medium'>{error}</p>
           </div>
+          <p className='absolute-white text-sm font-medium'>
+            Already have an account?{" "}
+            <Link
+              to='/login'
+              href=''
+              className='text-[#703BF7]'
+            >
+              {" "}
+              Log in
+            </Link>
+          </p>
         </form>
       </div>
       <ToastContainer
         position='top-right'
         autoClose={2000}
         hideProgressBar={true}
-        theme='dark'
+        theme='light'
       />
     </div>
   );
