@@ -62,11 +62,10 @@ export const login = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         httpOnly: true,
-        expires: new Date(Date.now() + 24 * 60 * 60),
       })
       .status(200)
       .json(rest);
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
