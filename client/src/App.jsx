@@ -8,6 +8,8 @@ import Services from "./pages/Services";
 import PropertyDetailsPage from "./pages/PropertyDetailsPage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Profile from "./pages/Profile";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -46,6 +48,12 @@ function App() {
           path='/services'
           element={<Services />}
         />
+        <Route element={<PrivateRoute />}>
+          <Route
+            path='/profile'
+            element={<Profile />}
+          />
+        </Route>
       </Route>
     </Routes>
   );

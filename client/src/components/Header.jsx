@@ -1,10 +1,13 @@
 import { Navbar } from "flowbite-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [showTop, setShowTop] = useState(true);
   const path = useLocation.pathname;
+
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <>
@@ -26,7 +29,7 @@ function Header() {
           </button>
         </div>
       )}
-      <Navbar className='bg-[#1a1a1a] px-4 py-5 md:px-[80px] md:py-[14px] xl:px-[162px] xl:py-5 sticky top-0 z-50'>
+      <Navbar className='bg-[#1a1a1a] px-4 py-5 md:px-[80px] md:py-[14px] xl:px-[162px] xl:py-5 sticky top-0 z-50 list-none'>
         <Navbar.Brand href='#'>
           <picture>
             <source
@@ -45,11 +48,19 @@ function Header() {
         </Navbar.Brand>
         <div className='md:order-2 flex items-center gap-6 mb-4 md:mb-0'>
           <Navbar.Link
-            active={path === "/login"}
+            active={path === "/profile"}
             as={"div"}
             className='hidden md:inline absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
-            <Link to='/login'>Login</Link>
+            {currentUser ? (
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className='rounded-full h-7 w-7 object-cover cursor-pointer'
+              />
+            ) : (
+              <Link to='/profile'>Login</Link>
+            )}
           </Navbar.Link>
           <Navbar.Link
             active={path === "/signup"}
@@ -97,11 +108,19 @@ function Header() {
             <Link to='/contact'>Contact Us</Link>
           </Navbar.Link>
           <Navbar.Link
-            active={path === "/login"}
+            active={path === "/profile"}
             as={"div"}
             className='md:hidden absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
-            <Link to='/login'>Login</Link>
+            {currentUser ? (
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className='rounded-full h-7 w-7 object-cover cursor-pointer'
+              />
+            ) : (
+              <Link to='/profile'>Login</Link>
+            )}
           </Navbar.Link>
           <Navbar.Link
             active={path === "/signup"}
