@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
-export const signUp = async (req, res) => {
+export const signUp = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (
@@ -35,7 +35,7 @@ export const signUp = async (req, res) => {
     // MUST HAVE A RESPONSE TO CLOSE THE REQUEST CONNECTION
     res.json("User signed up successfully");
   } catch (error) {
-    res.status(500).json(error.message);
+    next(errorHandler(500, error.message));
   }
 };
 
@@ -66,6 +66,6 @@ export const login = async (req, res, next) => {
       .status(200)
       .json(rest);
   } catch (error) {
-    next(error);
+    next(errorHandler(500, "Something went wrong"));
   }
 };
