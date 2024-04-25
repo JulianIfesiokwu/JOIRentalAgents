@@ -10,6 +10,7 @@ import {
   signInFailure,
   signInSuccess,
 } from "../redux/user/userSlice.js";
+import OAuth from "../components/OAuth.jsx";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -100,6 +101,7 @@ const Login = () => {
                   "Login"
                 )}
               </button>
+              <OAuth />
             </div>
             <p className='absolute-white text-sm font-medium'>{error}</p>
           </div>

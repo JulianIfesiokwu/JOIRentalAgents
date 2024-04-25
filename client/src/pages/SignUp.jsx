@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "flowbite-react";
+import OAuth from "../components/OAuth";
 
 import ClientDetails from "../components/ClientDetails";
 
@@ -155,17 +156,20 @@ const SignUp = () => {
             </div>
             <p className='absolute-white text-sm font-medium'>{error}</p>
           </div>
-          <p className='absolute-white text-sm font-medium'>
-            Already have an account?{" "}
-            <Link
-              to='/login'
-              href=''
-              className='text-[#703BF7]'
-            >
-              {" "}
-              Log in
-            </Link>
-          </p>
+          <div className='flex items-center justify-between w-full'>
+            <p className='absolute-white text-sm font-medium'>
+              Already have an account?{" "}
+              <Link
+                to='/login'
+                href=''
+                className='text-[#703BF7]'
+              >
+                {" "}
+                Log in
+              </Link>
+            </p>
+            <OAuth />
+          </div>
         </form>
       </div>
       <ToastContainer

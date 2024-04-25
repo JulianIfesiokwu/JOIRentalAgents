@@ -53,11 +53,13 @@ function Header() {
             className='hidden md:inline absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
             {currentUser ? (
-              <img
-                src={currentUser.avatar}
-                alt={currentUser.name}
-                className='rounded-full h-7 w-7 object-cover cursor-pointer'
-              />
+              <Link to='/profile'>
+                <img
+                  src={currentUser.profilePicture}
+                  alt={currentUser.name}
+                  className='rounded-full h-7 w-7 object-cover cursor-pointer'
+                />
+              </Link>
             ) : (
               <Link to='/profile'>Login</Link>
             )}
@@ -67,7 +69,13 @@ function Header() {
             as={"div"}
             className='hidden md:inline absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
-            <Link to='/signup'>Sign up</Link>
+            {currentUser ? (
+              <p className='cursor-pointer absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'>
+                Logout
+              </p>
+            ) : (
+              <Link to='/signup'>Sign up</Link>
+            )}
           </Navbar.Link>
           <Navbar.Toggle />
         </div>
@@ -113,11 +121,13 @@ function Header() {
             className='md:hidden absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
             {currentUser ? (
-              <img
-                src={currentUser.avatar}
-                alt={currentUser.name}
-                className='rounded-full h-7 w-7 object-cover cursor-pointer'
-              />
+              <Link to='/profile'>
+                <img
+                  src={currentUser.profilePicture}
+                  alt={currentUser.name}
+                  className='rounded-full h-7 w-7 object-cover cursor-pointer'
+                />
+              </Link>
             ) : (
               <Link to='/profile'>Login</Link>
             )}
@@ -127,7 +137,13 @@ function Header() {
             as={"div"}
             className='md:hidden absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'
           >
-            <Link to='/signup'>Sign up</Link>
+            {currentUser ? (
+              <p className='cursor-pointer absolute-white mb-4 md:mb-0 border-none text-sm leading-[150%] font-normal'>
+                Logout
+              </p>
+            ) : (
+              <Link to='/signup'>Sign up</Link>
+            )}
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
