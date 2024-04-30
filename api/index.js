@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 import userRoutes from "./views/user.routes.js";
 import authRoutes from "./views/auth.route.js";
@@ -16,6 +17,9 @@ app.use(express.json());
 
 // REMOVE CORS OPTIONS
 app.use(cors());
+
+// ALLOW US TO READ COOKIES FROM CLIENT SIDE
+app.use(cookieParser());
 
 app.listen("3456", () => {
   console.log("listening on port 3456");
