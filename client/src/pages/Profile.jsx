@@ -13,6 +13,9 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
+  deleteUserFailure,
+  deleteUserSuccess,
+  deleteUserStart,
 } from "../redux/user/userSlice.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,6 +59,26 @@ const Profile = () => {
       toast("Your account has been updated successfully!");
     } catch (error) {
       dispatch(updateUserFailure(error));
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      dispatch(deleteUserStart());
+
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+
+      dispatch(deleteUserSuccess());
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
     }
   };
 
@@ -174,10 +197,15 @@ const Profile = () => {
           </button>
         </form>
         <div className='flex items-center justify-between mt-2 w-1/2'>
-          <span className='text-red-700 cursor-pointer'>Delete Account</span>
+          <span
+            className='text-red-700 cursor-pointer'
+            onClick={handleDelete}
+          >
+            Delete Account
+          </span>
           <span className='text-red-700 cursor-pointer'>Sign out</span>
         </div>
-        <p className='text-700-red mt-4'>{error ? error : ""}</p>
+        <p className='absolute-white mt-4'>{error ? error : ""}</p>
       </div>
       <ToastContainer
         position='top-right'
