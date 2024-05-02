@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ClientDetails from "../components/ClientDetails";
 import { useState, useRef, useEffect } from "react";
 import { Spinner } from "flowbite-react";
@@ -9,20 +9,53 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "../firebase";
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+} from "../redux/user/userSlice.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
   const fileref = useRef(null);
   const [file, setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
+  const dispatch = useDispatch();
 
-  const currentUser = useSelector((state) => state.user);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
 
   const handleChange = (e) => {
-    if (e.target.id === "email" || e.target.id === "password") {
-      setFormData({ ...formData, [e.target.id]: e.target.value });
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      dispatch(updateUserStart());
+
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success === false) {
+        dispatch(updateUserFailure(data.message));
+        return;
+      }
+
+      dispatch(updateUserSuccess(data));
+      toast("Your account has been updated successfully!");
+    } catch (error) {
+      dispatch(updateUserFailure(error));
     }
   };
 
@@ -62,9 +95,12 @@ const Profile = () => {
     <div className='bg-[#141414]'>
       <div className='flex flex-col items-center gap-5 md:gap-[30px] px-4 py-[30px] md:px-20 md:py-4 lg:px-[162px]'>
         <h1 className='absolute-white text-center text-3xl font-semibold my-6'>
-          {currentUser.currentUser.username} Profile
+          {currentUser.username} Profile
         </h1>
-        <form className='flex flex-col gap-4 w-2/4'>
+        <form
+          className='flex flex-col gap-4 w-2/4'
+          onSubmit={handleSubmit}
+        >
           <input
             type='file'
             className=''
@@ -102,6 +138,7 @@ const Profile = () => {
             label={"Username"}
             handleChange={handleChange}
             id={"username"}
+            defaultValue={currentUser.username}
             value={formData.username}
           />
           <ClientDetails
@@ -111,6 +148,7 @@ const Profile = () => {
             handleChange={handleChange}
             id={"email"}
             value={formData.email}
+            defaultValue={currentUser.email}
           />
           <ClientDetails
             type={"password"}
@@ -120,8 +158,9 @@ const Profile = () => {
             id={"password"}
           />
           <button
+            disabled={loading}
             type='submit'
-            className='text-sm md:text-base lg:text-[18px] leading-[1.24] font-medium bg-[#703BF7] px-[34px] lg:px-46 py-[14px] lg:py-[18px] rounded-[6px] absolute-white w-full md:w-auto md:shrink-0'
+            className='text-sm md:text-base lg:text-[18px] leading-[1.24] font-medium bg-[#703BF7] px-[34px] lg:px-46 py-[14px] lg:py-[18px] rounded-[6px] absolute-white w-full md:w-auto md:shrink-0 hover:opacity-90'
           >
             {loading ? (
               <>
@@ -130,7 +169,7 @@ const Profile = () => {
                 <span>Updating...</span>
               </>
             ) : (
-              "Update your profile"
+              "Update"
             )}
           </button>
         </form>
@@ -138,7 +177,14 @@ const Profile = () => {
           <span className='text-red-700 cursor-pointer'>Delete Account</span>
           <span className='text-red-700 cursor-pointer'>Sign out</span>
         </div>
+        <p className='text-700-red mt-4'>{error ? error : ""}</p>
       </div>
+      <ToastContainer
+        position='top-right'
+        autoClose={2000}
+        hideProgressBar={true}
+        theme='light'
+      />
     </div>
   );
 };
