@@ -150,7 +150,7 @@ const SignUp = () => {
                     <span>Creating account</span>
                   </>
                 ) : (
-                  "Sign in"
+                  "Sign Up"
                 )}
               </button>
             </div>

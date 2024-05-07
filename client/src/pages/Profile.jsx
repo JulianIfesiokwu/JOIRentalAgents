@@ -16,6 +16,9 @@ import {
   deleteUserFailure,
   deleteUserSuccess,
   deleteUserStart,
+  logoutUserFailure,
+  logoutUserSuccess,
+  logoutUserStart,
 } from "../redux/user/userSlice.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -77,8 +80,28 @@ const Profile = () => {
       }
 
       dispatch(deleteUserSuccess());
+      toast("Your account has been deleted!");
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(logoutUserStart);
+      const res = await fetch(`/api/auth/logout`);
+
+      const data = await res.json();
+
+      if (data.success === false) {
+        dispatch(logoutUserFailure);
+        return;
+      }
+
+      dispatch(logoutUserSuccess(data));
+      toast("You have signed out!");
+    } catch (error) {
+      dispatch(logoutUserFailure(error.message));
     }
   };
 
@@ -203,7 +226,12 @@ const Profile = () => {
           >
             Delete Account
           </span>
-          <span className='text-red-700 cursor-pointer'>Sign out</span>
+          <span
+            className='absolute-white cursor-pointer'
+            onClick={handleSignOut}
+          >
+            Logout
+          </span>
         </div>
         <p className='absolute-white mt-4'>{error ? error : ""}</p>
       </div>
