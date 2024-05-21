@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 
 import userRoutes from "./views/user.routes.js";
 import authRoutes from "./views/auth.route.js";
+import listingRoutes from "./views/listing.route.js";
 
 // INITIALIZE DOTENV
 dotenv.config();
@@ -36,6 +37,8 @@ app.listen("3456", () => {
 app.use("/api/user", userRoutes);
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/listing", listingRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
