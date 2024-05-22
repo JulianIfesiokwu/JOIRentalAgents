@@ -20,6 +20,7 @@ import {
   logoutUserSuccess,
   logoutUserStart,
 } from "../redux/user/userSlice.js";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -218,6 +219,12 @@ const Profile = () => {
               "Update"
             )}
           </button>
+          <Link
+            to='/create-listing'
+            className='bg-green-700 absolute-white p-3 rounded-lg text-center hover:opacity-90'
+          >
+            Create a Listing
+          </Link>
         </form>
         <div className='flex items-center justify-between mt-2 w-1/2'>
           <span

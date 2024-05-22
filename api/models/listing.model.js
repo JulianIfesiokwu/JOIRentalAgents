@@ -34,6 +34,9 @@ const listingSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    offer: {
+      type: Boolean,
+    },
     regularPrice: {
       type: Number,
       required: true,
